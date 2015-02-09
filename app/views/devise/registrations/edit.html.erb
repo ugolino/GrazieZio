@@ -11,8 +11,8 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", required: false, label: false, placeholder: "Password" %>
-    <%= f.input :password_confirmation, required: false, label: false, placeholder: "Password Confirmation"  %>
+    <%= f.input :password, autocomplete: "off", required: false, label: false, placeholder: "New Password" %>
+    <%= f.input :password_confirmation, required: false, label: false, placeholder: "New Password Confirmation"  %>
     <%= f.input :current_password, required: true, label: false, placeholder: "Current Password" %>
   </div>
 
