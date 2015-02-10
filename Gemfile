@@ -33,6 +33,8 @@ gem "simple_form"
 
 gem 'devise'
 
+gem "auto_html"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

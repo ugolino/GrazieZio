@@ -1,26 +1,23 @@
 <div class="panel panel-info">
 	<div class="panel-heading">
-	
-	<%= time_ago_in_words(task.created_at) %> ago
-	
-	
-	<div class="pull-right">
-		<%= link_to "edit ", edit_task_path(task) %> |
-		<%= link_to "delete", task_path(task), method: :delete, data: {confirm: "Task will be deleted! Are you sure?"} %>
-	</div>
-</div>
-	
-	<div class="panel-body"><%= task.content %>
-			<% if task.state == "doing" %>
+		<%= time_ago_in_words(task.created_at) %> ago
 		<div class="pull-right">
-		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: "btn btn-warning btn-xs " %>
-		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: "btn btn-success btn-xs " %>
+			<%= link_to "edit ", edit_task_path(task) %> |
+			<%= link_to "delete", task_path(task), method: :delete, data: {confirm: "Task will be deleted! Are you sure?"} %>
 		</div>
-		<% elsif task.state == "done" %>
-		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-warning btn-xs pull-right" %>
-		<% else %>
-		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-success btn-xs pull-right" %>
-		<% end %></div>
+	</div>
 	
-
+	<div class="panel-body">
+		<%= raw(task.content_html) %>
+		<% if task.state == "doing" %>
+			<div class="pull-right">
+			<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: "btn btn-warning btn-xs " %>
+			<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: "btn btn-success btn-xs " %>
+			</div>
+		<% elsif task.state == "done" %>
+			<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-warning btn-xs pull-right" %>
+		<% else %>
+			<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-success btn-xs pull-right" %>
+		<% end %>
+	</div>
 </div>
