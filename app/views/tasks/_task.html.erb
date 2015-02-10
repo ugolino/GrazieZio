@@ -3,10 +3,13 @@
 	
 	added <%= time_ago_in_words(task.created_at) %> ago
 	
-	<%= link_to "delete", task_path(task), method: :delete, data: {confirm: "Task will be deleted! Are you sure?"}, class: "pull-right" %>
-
+	
+	<div class="pull-right">
+		<%= link_to "edit ", edit_task_path(task) %> |
+		<%= link_to "delete", task_path(task), method: :delete, data: {confirm: "Task will be deleted! Are you sure?"} %>
 	</div>
-	<%= link_to edit_task_path(task) do %>
+</div>
+	
 	<div class="panel-body"><%= task.content %>
 			<% if task.state == "doing" %>
 		<div class="pull-right">
@@ -18,9 +21,6 @@
 		<% else %>
 		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-success btn-xs pull-right" %>
 		<% end %></div>
-	<% end %>
- 
-
-
+	
 
 </div>
