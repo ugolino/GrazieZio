@@ -7,19 +7,20 @@
 
 	</div>
 	<%= link_to edit_task_path(task) do %>
-	<div class="panel-body"><%= task.content %></div>
-	<% end %>
- 
-	<div class="panel-footer text-center">
-		<% if task.state == "doing" %>
-		<div class="btn-group btn-group-justified">
-		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: "btn btn-primary btn-xs btn-block" %>
-		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: "btn btn-primary btn-xs btn-block" %>
+	<div class="panel-body"><%= task.content %>
+			<% if task.state == "doing" %>
+		<div class="pull-right">
+		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "to_do"), method: :put, class: "btn btn-warning btn-xs " %>
+		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "done"), method: :put, class: "btn btn-success btn-xs " %>
 		</div>
 		<% elsif task.state == "done" %>
-		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-primary btn-xs btn-block" %>
+		<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-warning btn-xs pull-right" %>
 		<% else %>
-		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-primary btn-xs btn-block" %>
-		<% end %>
-	</div>
+		<%= link_to "<i class='fa fa-check'></i>".html_safe, change_task_path(task, state: "doing"), method: :put, class: "btn btn-success btn-xs pull-right" %>
+		<% end %></div>
+	<% end %>
+ 
+
+
+
 </div>
